@@ -13,15 +13,32 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.title}>Cadastro</Text>
 
-      <TextInput style={styles.input} placeholder="Nome" />
-      <TextInput style={styles.input} placeholder="E-mail" />
+      <TextInput
+        style={styles.input}
+        placeholder="Nome"
+        placeholderTextColor="black"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="E-mail"
+        placeholderTextColor="black"
+      />
       <TextInput
         style={styles.input}
         placeholder="Senha"
         secureTextEntry={true}
+        placeholderTextColor="black"
       />
-      <TextInput style={styles.input} placeholder="Aniversário" />
-      <TextInput style={styles.input} placeholder="CPF" />
+      <TextInput
+        style={styles.input}
+        placeholder="Aniversário"
+        placeholderTextColor="black"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="CPF"
+        placeholderTextColor="black"
+      />
 
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Cadastre-se</Text>
@@ -41,6 +58,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   title: {
+    fontFamily: "Alata",
     fontSize: 30,
     fontWeight: "bold",
     color: "black",
@@ -63,12 +81,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     fontSize: 18,
     color: "black",
+    fontFamily: "Alata",
   },
   button: {
     backgroundColor: "#ec4760",
     paddingVertical: 12,
     paddingHorizontal: 40,
     borderRadius: 8,
+    fontFamily: "Alata",
   },
   buttonText: {
     color: "white",
