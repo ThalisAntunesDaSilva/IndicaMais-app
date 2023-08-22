@@ -1,8 +1,4 @@
 import { StyleSheet } from "react-native";
-import Constants from "expo-constants";
-import friends from "../../assets/friends.png";
-import people from "../../assets/people.png"
-import gains from "../../assets/gains.png"
 
 export default StyleSheet.create({
   container: {
@@ -14,7 +10,7 @@ export default StyleSheet.create({
     width: "100%",
     height : "100%"
   },
-  
+
   containerHeader:{
     display: "flex",
     flexDirection: "row",
@@ -23,7 +19,7 @@ export default StyleSheet.create({
     backgroundColor: '#fff',
     width: "100%",
   },
-  
+
   viewInformation:{
     display: "flex",
     flexDirection: "column",
@@ -33,7 +29,7 @@ fontSize: 25
   },
 
   containerButtons:{
-   
+
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-evenly",
