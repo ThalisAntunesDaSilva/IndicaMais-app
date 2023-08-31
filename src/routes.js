@@ -6,9 +6,13 @@ import Home from "./pages/Home/index";
 import LoginScreen from "./pages/LoginScreen/index";
 import Register from "./pages/Register";
 
+import Indications from "./pages/Indications/index";
+
 export default function Routes() {
-  return (
-    <NavigationContainer>
+    return (
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Indications" component={Indications} />
       <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="Home" component={Home} />

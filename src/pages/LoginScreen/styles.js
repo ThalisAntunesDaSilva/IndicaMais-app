@@ -7,23 +7,44 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
-      },
-      title: {
+    },
+    title: {
         fontSize: 28,
         fontWeight: 'bold',
         marginBottom: 20,
-      },
-      form: {
+    },
+    form: {
         width: '100%',
-      },
-      input: {
+    },
+    input: {
         width: '100%',
         height: 40,
         borderColor: 'gray',
         borderWidth: 1,
         marginBottom: 10,
         paddingHorizontal: 10,
-      },
+    },
+    signupContainer: {
+        marginTop: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    signupText: {
+        fontSize: 16,
+    },
+    signupLinkText: {
+        color: '#EC4760',
+        textDecorationLine: 'underline',
+        marginLeft: 5,
+    },
+    passwordInputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: 'gray',
+        paddingHorizontal: 20,
+    },
+
       signupContainer: {
         marginTop: 20,
         flexDirection: 'row',
@@ -45,20 +66,17 @@ export default StyleSheet.create({
         paddingHorizontal: 20,
       },
       passwordInput: {
-        flex: 1,
-        height: 40,
-        paddingVertical: 5,
-        paddingRight: 5,
-      },
+
+    },
+    inputContainer: {
+        marginBottom: 10,
+    },
+
       inputContainer: {
         marginBottom: 10,
       },
       passwordInputWrapper: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        borderWidth: 1,
-        borderColor: 'gray',
-        paddingHorizontal: 10,
+
       },
       passwordIcon: {
         marginRight: 10,
