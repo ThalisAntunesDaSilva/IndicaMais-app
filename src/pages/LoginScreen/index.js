@@ -63,5 +63,4 @@ function LoginForm() {
                 </TouchableOpacity>
             </View>
         </View>
-    );
-}
+
