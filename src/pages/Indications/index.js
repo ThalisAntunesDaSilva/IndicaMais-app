@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, TextInput, StatusBar, Keyboard, Touchable
 import { Feather } from '@expo/vector-icons';
 import styles from './styles';
 
-const IndicationsList = () => {
+const IndicationsList = ({navigation}) => {
   const [isSearchFocused, setSearchFocused] = useState(false);
 
   const dismissKeyboard = () => {
@@ -20,7 +20,8 @@ const IndicationsList = () => {
       <View style={styles.container}>
         <StatusBar backgroundColor='white' barStyle='dark-content' />
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton}>
+          <TouchableOpacity style={styles.backButton} 
+          onPress={() => navigation.navigate("Home")}>
             <Feather name='arrow-left' size={16} color='black' />
             <Text style={styles.backText}>Voltar</Text>
           </TouchableOpacity>

@@ -9,12 +9,12 @@ import Indications from "./pages/Indications/index";
 
 export default function Routes() {
     return (
-      <NavigationContainer>
+      <NavigationContainer>     
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="LoginScreen" component={LoginScreen} />
       <Stack.Screen name="Indications" component={Indications} />
-          <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="Home" component={Home} />
         </Stack.Navigator>
     </NavigationContainer>
   );
