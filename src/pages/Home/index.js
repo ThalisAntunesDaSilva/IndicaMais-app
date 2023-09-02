@@ -39,7 +39,7 @@ export default function App({navigation}) {
       <Image style={styles.imageDecoration} source={friends}></Image>
       </TouchableOpacity> 
 
-      <TouchableOpacity style={styles.buttonHome}>
+      <TouchableOpacity style={styles.buttonHome}  onPress={() => navigation.navigate("Indication")}>
       <View>
       <Text style={styles.buttonHomeTextTitle}>Indique uma pessoa</Text>
 
