@@ -34,12 +34,16 @@ export default StyleSheet.create({
         color: "black",
         fontFamily: "Alata",
       },
-      button: {
+      buttonRegister: {
         backgroundColor: "#ec4760",
-        paddingVertical: 12,
-        paddingHorizontal: 40,
         borderRadius: 8,
-        fontFamily: "Alata",
+        fontFamily: "Alata-Regular",
+        height: 50,
+        display: 'flex',
+        flexDirection: "column",
+
+        alignItems: "center",
+        justifyContent: "center",
       },
       buttonText: {
         color: "white",
@@ -47,5 +51,8 @@ export default StyleSheet.create({
         fontSize: 18,
         borderRadius: 15,
       },
+      listFormRegister:{
+        width: "100%",
+      }
 
 })

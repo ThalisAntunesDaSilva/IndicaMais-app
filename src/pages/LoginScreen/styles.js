@@ -3,27 +3,61 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({  
 
     container: {
-        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
-      },
-      title: {
+   
+        width: '100%',
+        height: '100%',
+    },
+    title: {
         fontSize: 28,
         fontWeight: 'bold',
         marginBottom: 20,
-      },
-      form: {
+    },
+    form: {
         width: '100%',
-      },
-      input: {
+    
+        height: 400,
+      
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    input: {
         width: '100%',
         height: 40,
         borderColor: 'gray',
         borderWidth: 1,
         marginBottom: 10,
         paddingHorizontal: 10,
-      },
+        backgroundColor: 'white',
+        borderRadius: 10,
+    },
+    signupContainer: {
+        marginTop: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    signupText: {
+        fontSize: 16,
+    },
+    signupLinkText: {
+        color: '#EC4760',
+        textDecorationLine: 'underline',
+        marginLeft: 5,
+    },
+    passwordInputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: 'gray',
+        paddingHorizontal: 20,
+    },
+
       signupContainer: {
         marginTop: 20,
         flexDirection: 'row',
@@ -45,20 +79,17 @@ export default StyleSheet.create({
         paddingHorizontal: 20,
       },
       passwordInput: {
-        flex: 1,
-        height: 40,
-        paddingVertical: 5,
-        paddingRight: 5,
-      },
+
+    },
+    inputContainer: {
+        marginBottom: 10,
+    },
+
       inputContainer: {
         marginBottom: 10,
       },
       passwordInputWrapper: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        borderWidth: 1,
-        borderColor: 'gray',
-        paddingHorizontal: 10,
+
       },
       passwordIcon: {
         marginRight: 10,
@@ -69,12 +100,14 @@ export default StyleSheet.create({
         marginBottom: 5,
         textAlign: 'left', 
         color: '#A7A6A5',
+        width: '100%',
       },
       loginButtonContainer: {
         marginTop: 270,
         alignItems: 'center',
       },
       loginButton: {
+        marginTop: 40,
         width: '60%', 
         paddingVertical: 15,
         paddingHorizontal: 30, 
