@@ -6,7 +6,7 @@ import people from "../../assets/people.png"
 import gains from "../../assets/gains.png"
 import { Feather } from "@expo/vector-icons";
 
-export default function App() {
+export default function App({navigation}) {
   return (
     <View style={styles.container}>
    
@@ -29,7 +29,7 @@ export default function App() {
 </View>
 
       <View style={styles.containerButtons}>
-     <TouchableOpacity style={styles.buttonHome}>
+     <TouchableOpacity style={styles.buttonHome}   onPress={() => navigation.navigate("Indications")}>
       <View>
       <Text style={styles.buttonHomeTextTitle}>Indicações</Text>
 
@@ -39,7 +39,7 @@ export default function App() {
       <Image style={styles.imageDecoration} source={friends}></Image>
       </TouchableOpacity> 
 
-      <TouchableOpacity style={styles.buttonHome}>
+      <TouchableOpacity style={styles.buttonHome}  onPress={() => navigation.navigate("Indication")}>
       <View>
       <Text style={styles.buttonHomeTextTitle}>Indique uma pessoa</Text>
 

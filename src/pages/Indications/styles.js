@@ -18,11 +18,13 @@ const styles = StyleSheet.create({
   },
   backText: {
     marginLeft: 5,
+    fontFamily: 'Alata-Regular'
   },
   title: {
     marginTop: 20,
     fontSize: 24,
     fontWeight: 'bold',
+    fontFamily: 'Alata-Regular'
   },
   content: {
     flex: 1,
@@ -54,6 +56,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontWeight: 'bold',
     fontSize: 20,
+    fontFamily: 'Alata-Regular'
   },
 });
 
