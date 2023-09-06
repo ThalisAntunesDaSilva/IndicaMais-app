@@ -8,14 +8,15 @@ export default StyleSheet.create({
     paddingTop: 90,
     paddingHorizontal: 10,
   },
-  title: {
-    fontFamily: "Alata-Regular",
+  titleRegister:{
+    fontFamily: 'Alata-Regular',
     fontSize: 30,
     color: "black",
     marginBottom: 5,
   },
+
   label: {
-    fontFamily: "Alata-Regular",
+    fontFamily: 'Alata-Regular',
     fontSize: 16,
     marginBottom: 5,
     alignSelf: "flex-start",
@@ -32,10 +33,10 @@ export default StyleSheet.create({
     borderRadius: 8,
   },
 
-  inputLabel: {
+  inputLabelRegister: {
     width: "100%",
     fontSize: 16,
-    fontFamily: "Alata-Regular",
+    fontFamily: 'Alata-Regular',
     marginBottom: 5,
     color: "#A7A6A5",
     width: "100%",
@@ -52,7 +53,7 @@ export default StyleSheet.create({
     justifyContent: "center",
     marginBottom: 20,
   },
-  buttonText: {
+  buttonTextRegister: {
     color: "#F4F6F5",
     fontFamily: "Alata-Regular",
     fontSize: 16,
@@ -69,12 +70,12 @@ export default StyleSheet.create({
     paddingBottom: 3,
     marginVertical: 20,
   },
-  signupText: {
+  signupTextRegister: {
     fontSize: 16,
     color: "#A7A6A5",
     fontFamily: "Alata-Regular",
   },
-  signupLinkText: {
+  signupLinkTextRegister: {
     color: "#EC4760",
     textDecorationLine: "underline",
     marginLeft: 5,

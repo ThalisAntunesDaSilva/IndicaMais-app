@@ -5,10 +5,10 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
-    fontFamily: 'Alata-Regular'
+    padding: 20
   },
   title: {
+    fontFamily: 'Alata-Regular',
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 20,
@@ -39,9 +39,11 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   signupText: {
+    fontFamily: 'Alata-Regular',
     fontSize: 16,
   },
   signupLinkText: {
+    fontFamily: 'Alata-Regular',
     color: '#EC4760',
     textDecorationLine: 'underline',
     marginLeft: 5,
@@ -76,6 +78,7 @@ export default StyleSheet.create({
     marginLeft: 10,
   },
   inputLabel: {
+    fontFamily: 'Alata-Regular',
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 5,
@@ -103,6 +106,7 @@ export default StyleSheet.create({
     borderRadius: 8,
   },
   loginButtonText: {
+    fontFamily: 'Alata-Regular',
     fontWeight: 'bold',
     color: 'white',
   },

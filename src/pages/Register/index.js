@@ -1,7 +1,5 @@
 import { StatusBar } from "expo-status-bar";
 import {
-  Button,
-  StyleSheet,
   FlatList,
   Text,
   TextInput,
@@ -15,37 +13,37 @@ const DATA = [{ id: "1", text: "Item 1" }];
 export default function App({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Cadastro</Text>
+      <Text style={styles.titleRegister}>Cadastro</Text>
       <FlatList
         data={DATA}
         style={styles.listFormRegister}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={{ padding: 16 }}>
-            <Text style={styles.inputLabel}> Nome </Text>
+            <Text style={styles.inputLabelRegister}> Nome </Text>
             <TextInput style={styles.input} placeholder="" />
 
-            <Text style={styles.inputLabel}> E-mail </Text>
+            <Text style={styles.inputLabelRegister}> E-mail </Text>
             <TextInput style={styles.input} placeholder="" />
 
-            <Text style={styles.inputLabel}> Senha </Text>
+            <Text style={styles.inputLabelRegister}> Senha </Text>
             <TextInput
               style={styles.input}
               placeholder=""
               secureTextEntry={true}
             />
 
-            <Text style={styles.inputLabel}> Confirmar senha </Text>
+            <Text style={styles.inputLabelRegister}> Confirmar senha </Text>
             <TextInput
               style={styles.input}
               placeholder=""
               secureTextEntry={true}
             />
 
-            <Text style={styles.inputLabel}> Aniversário </Text>
+            <Text style={styles.inputLabelRegister}> Aniversário </Text>
             <TextInput style={styles.input} placeholder="" />
 
-            <Text style={styles.inputLabel}> CPF </Text>
+            <Text style={styles.inputLabelRegister}> CPF </Text>
             <TextInput style={styles.input} placeholder="" />
           </View>
         )}
@@ -55,13 +53,13 @@ export default function App({ navigation }) {
         style={styles.buttonRegister}
         onPress={() => navigation.navigate("LoginScreen")}
       >
-        <Text style={styles.buttonText}>Cadastre-se</Text>
+        <Text style={styles.buttonTextRegister}>Cadastre-se</Text>
       </TouchableOpacity>
 
       <View style={styles.signupContainer}>
-        <Text style={styles.signupText}>Já tem cadastro?</Text>
+        <Text style={styles.signupTextRegister}>Já tem cadastro?</Text>
         <TouchableOpacity>
-          <Text style={styles.signupLinkText}>Faça o login</Text>
+          <Text style={styles.signupLinkTextRegister}>Faça o login</Text>
         </TouchableOpacity>
       </View>
 

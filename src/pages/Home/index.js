@@ -14,7 +14,7 @@ export default function App({navigation}) {
 <View style={styles.containerHeader}>
   <View style={styles.viewInformation}>
 <Text style={styles.nameText}>Jaílson Mendes</Text>
-<Text>200 pts</Text>
+<Text style={styles.pointsText}>200 pts</Text>
 </View>
 
 <TouchableOpacity>

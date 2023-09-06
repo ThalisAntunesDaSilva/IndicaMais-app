@@ -21,9 +21,13 @@ export default StyleSheet.create({
     fontWeight: "bold",
     marginTop: 30,
     marginLeft: 15,
+    fontFamily: 'Alata-Regular',
   },
   form: {
     width: "100%",
+  },
+  infoCardLabel:{
+    fontFamily: 'Alata-Regular',
   },
   inputBackground: {
     width: "100%",
@@ -75,6 +79,7 @@ export default StyleSheet.create({
     marginBottom: 15,
   },
   indiqueButtonText: {
+    fontFamily: 'Alata-Regular',
     fontWeight: "bold",
     color: "white",
     fontSize: 16,
@@ -87,6 +92,7 @@ export default StyleSheet.create({
   },
 
   titleFormulario: {
+    fontFamily: 'Alata-Regular',
     padding: 10,
     fontWeight: 600,
     color: "black",

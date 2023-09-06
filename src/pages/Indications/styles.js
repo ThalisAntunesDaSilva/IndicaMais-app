@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   backText: {
+    fontFamily: 'Alata-Regular',
     marginLeft: 8,
   },
   title: {
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   sectionTitle: {
+    fontFamily: 'Alata-Regular',
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
