@@ -1,3 +1,6 @@
 {
-  "urlRandomness": "sMyMvGI"
+  "urlRandomness": "sMyMvGI",
+  "dev": true,
+  "minify": false,
+  "https": false
 }

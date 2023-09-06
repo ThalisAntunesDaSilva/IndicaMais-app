@@ -3,60 +3,77 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'white',
   },
   header: {
     flexDirection: 'row',
-    paddingTop: 20, 
-    paddingLeft: 20,
-    flexDirection: 'column',
+    alignItems: 'center',
+    padding: 18,
+    backgroundColor: 'white',
+    borderBottomWidth: 1,
+    borderBottomColor: 'lightgray',
+  },
+  indications: {
+      flex: 1,
+      
+    
   },
   backButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingBottom: 10,
   },
   backText: {
-    marginLeft: 5,
-    fontFamily: 'Alata-Regular'
+    marginLeft: 8,
   },
   title: {
-    marginTop: 20,
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
-    fontFamily: 'Alata-Regular'
+    marginLeft: 'auto',
+    paddingVertical: 8,
   },
   content: {
     flex: 1,
-    padding: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
   },
   searchBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 10,
-    borderWidth: 1,
-    borderColor: 'gray',
-    width: '100%',
-    height: 40,
-    borderRadius: 5,
-    marginBottom: 20,
-    backgroundColor: 'white',
+    backgroundColor: 'lightgray',
+    borderRadius: 8,
+    padding: 8,
   },
   searchIcon: {
-    marginLeft: 10,
-    marginRight: 10,
+    marginRight: 8,
   },
   searchInput: {
     flex: 1,
-    paddingLeft: 10,
+    fontSize: 16,
   },
   sectionContainer: {
-    marginTop: 20,
+    marginTop: 16,
   },
   sectionTitle: {
+    fontSize: 18,
     fontWeight: 'bold',
-    fontSize: 20,
-    fontFamily: 'Alata-Regular'
+    marginBottom: 8,
+    borderRadius:10,
+  },
+  itemContainer: {
+    backgroundColor: 'white',
+    padding: 16,
+    marginVertical: 8,
+    borderRadius: 8,
+    shadowColor: 'rgba(0, 0, 0, 0.1)',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 4,
+  },
+  itemText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
   },
 });
 
