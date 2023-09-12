@@ -14,7 +14,7 @@ const IndicationsList = ({ navigation }) => {
   const onFocusSearch = () => {
     setSearchFocused(true);
   };
-
+  //thalis boiola S2 S2
   const [indications, setIndications] = useState([
     { id: '1', name: 'Naruto Uzumaki', date: '01/09/2023', status: 'Consolidado' },
     { id: '2', name: 'Sasuke Uchiha', date: '02/09/2023', status: 'Indicado' },
