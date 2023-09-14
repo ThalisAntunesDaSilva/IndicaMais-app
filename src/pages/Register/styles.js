@@ -8,7 +8,7 @@ export default StyleSheet.create({
     paddingTop: 90,
     paddingHorizontal: 10,
   },
-  titleRegister:{
+  titleRegisterLabel:{
     fontFamily: 'Alata-Regular',
     fontSize: 30,
     color: "black",
@@ -33,7 +33,7 @@ export default StyleSheet.create({
     borderRadius: 8,
   },
 
-  inputLabelRegister: {
+  inputRegister: {
     width: "100%",
     fontSize: 16,
     fontFamily: 'Alata-Regular',
@@ -53,7 +53,7 @@ export default StyleSheet.create({
     justifyContent: "center",
     marginBottom: 20,
   },
-  buttonTextRegister: {
+  buttonRegisterText: {
     color: "#F4F6F5",
     fontFamily: "Alata-Regular",
     fontSize: 16,
@@ -70,12 +70,12 @@ export default StyleSheet.create({
     paddingBottom: 3,
     marginVertical: 20,
   },
-  signupTextRegister: {
+  signupRegisterText: {
     fontSize: 16,
     color: "#A7A6A5",
     fontFamily: "Alata-Regular",
   },
-  signupLinkTextRegister: {
+  signupLinkRegisterText: {
     color: "#EC4760",
     textDecorationLine: "underline",
     marginLeft: 5,

@@ -99,7 +99,7 @@ export default StyleSheet.create({
     fontSize: 20,
     marginLeft: 10,
     alignItems: "center",
-    justifyContent: "spaceBetween",
+    justifyContent: "space-between",
     fontWeight: "bold",
   },
   infoCard: {
