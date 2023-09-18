@@ -12,14 +12,15 @@
     "@expo/vector-icons": "^13.0.0",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/native-stack": "^6.9.13",
+    "axios": "^1.5.0",
     "expo": "~49.0.6",
     "expo-app-loading": "^2.1.1",
     "expo-font": "~11.4.0",
+    "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
-    "react-native": "0.72.3",
-    "react-native-google-fonts": "^0.0.0",
-    "expo-splash-screen": "~0.20.5"
+    "react-native": "0.72.4",
+    "react-native-google-fonts": "^0.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
