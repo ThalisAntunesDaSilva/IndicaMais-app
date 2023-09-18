@@ -7,6 +7,8 @@ import LoginScreen from "./pages/LoginScreen/index";
 import Register from "./pages/Register";
 import Indication from "./pages/Indication";
 import Indications from "./pages/Indications/index";
+import Rewards from "./pages/Rewards";
+import AddReward from "./pages/Rewards/AddReward";
 
 export default function Routes() {
     return (
@@ -17,7 +19,10 @@ export default function Routes() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="Indications" component={Indications} />
+        <Stack.Screen name="Rewards" component={Rewards} />
+        <Stack.Screen name="AddReward" component={AddReward} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
