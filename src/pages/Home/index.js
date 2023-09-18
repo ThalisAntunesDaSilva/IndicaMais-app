@@ -49,7 +49,7 @@ export default function App({navigation}) {
       <Image style={styles.imageDecoration} source={people}></Image>
       </TouchableOpacity> 
 
-      <TouchableOpacity style={styles.buttonHome}>
+      <TouchableOpacity style={styles.buttonHome} onPress={() => navigation.navigate("Rewards")}>
       <View>
       <Text style={styles.buttonHomeTextTitle}>Recompensas</Text>
 
