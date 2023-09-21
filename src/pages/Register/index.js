@@ -45,18 +45,17 @@ export default function App({ navigation }) {
     console.log(cpf)
   };
 
- const postUsers = async (event) => {
-  await api.post(`users`, {
-   name: name,
-   email: email,
-   password: password,
-   birthday: birthday,
-   cpf: cpf
-  }).then((response) => {
-    console.log(response.data)
-  }).catch(err => console.error(err))
- }
-
+  const postUsers = async (event) => {
+    await api.post(`users`, {
+      name: name,
+      email: email,
+      password: password,
+      birthday: birthday,
+      cpf: cpf
+    }).then((response) => {
+      console.log(response.data)
+    }).catch(err => console.error(err))
+  }
 
   return (
     <View style={styles.container}>
@@ -68,11 +67,11 @@ export default function App({ navigation }) {
         renderItem={({ item }) => (
           <View style={{ padding: 16 }}>
             <Text style={styles.inputRegister}> Nome </Text>
-            
-            <TextInput style={styles.input} placeholder=""  onChangeText={onChangeNameHandler}/>
+
+            <TextInput style={styles.input} placeholder="" onChangeText={onChangeNameHandler} />
 
             <Text style={styles.inputRegister}> E-mail </Text>
-            <TextInput style={styles.input} placeholder=""  onChangeText={onChangeEmailHandler}/>
+            <TextInput style={styles.input} placeholder="" onChangeText={onChangeEmailHandler} />
 
             <Text style={styles.inputRegister}> Senha </Text>
             <TextInput
@@ -90,17 +89,17 @@ export default function App({ navigation }) {
             />
 
             <Text style={styles.inputRegister}> Aniversário </Text>
-            <TextInput style={styles.input} placeholder=""  onChangeText={onChangeBirthdayHandler}/>
+            <TextInput style={styles.input} placeholder="" onChangeText={onChangeBirthdayHandler} />
 
             <Text style={styles.inputRegister}> CPF </Text>
-            <TextInput style={styles.input} placeholder="" onChangeText={onChangeCpfHandler}/>
+            <TextInput style={styles.input} placeholder="" onChangeText={onChangeCpfHandler} />
           </View>
         )}
       />
 
       <TouchableOpacity
         style={styles.buttonRegister}
-        onPress={() =>  postUsers()}
+        onPress={() => postUsers()}
       >
         <Text style={styles.buttonRegisterText}>Cadastre-se</Text>
       </TouchableOpacity>

@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import facebook from "../../assets/facebook.png";
 import gmail from "../../assets/gmail.png"
-import styles from "./styles"; // Importe os estilos
+import styles from "./styles";
 
 export default function Indication() {
   return (
