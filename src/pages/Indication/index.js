@@ -1,11 +1,29 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
-import { Feather } from '@expo/vector-icons';
 import facebook from "../../assets/facebook.png";
 import gmail from "../../assets/gmail.png"
 import styles from "./styles"; // Importe os estilos
 
 export default function Indication() {
+//Adicionar os uses states
+
+
+//Adicionar os handlers (com seus respectivos set states)
+
+
+//Faz a função post
+
+
+
+//Agora cada text input tu add onChangeText={onChangeEmailHandler}
+
+
+
+//E no botão TouchAbleopacity de enviar tu coloca onPress={() => navigation.navigate("LoginScreen")}
+
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.viewTitle}>
@@ -25,24 +43,7 @@ export default function Indication() {
       </View>
 
       {/* Form */}
-      <IndiquePessoaForm />
-    </View>
-  );
-}
-
-function IndiquePessoaForm() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-
-  const handleIndiquePessoa = () => {
-    console.log('Nome:', name);
-    console.log('Email:', email);
-    console.log('Telefone:', phone);
-  };
-
-  return (
-    <View style={styles.form}>
+      <View style={styles.form}>
       <View style={styles.infoCard}>
         <Text style={styles.infoCardLabel}>Nome</Text>
         <TextInput
@@ -79,5 +80,9 @@ function IndiquePessoaForm() {
         </TouchableOpacity>
       </View>
     </View>
+
+    </View>
   );
 }
+
+
