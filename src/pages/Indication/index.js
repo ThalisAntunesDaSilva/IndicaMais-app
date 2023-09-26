@@ -2,27 +2,40 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import facebook from "../../assets/facebook.png";
 import gmail from "../../assets/gmail.png"
-import styles from "./styles"; // Importe os estilos
+import styles from "./styles";
+import api from "../../services/api.js"
 
 export default function Indication() {
-//Adicionar os uses states
+
+const [name, setName] =useState("");
+const [email, setEmail] = useState("");
+const [phone, setPhone] = useState("");
 
 
-//Adicionar os handlers (com seus respectivos set states)
+const onChangeNameHandler = (name) => {
+  setName(name);
+  console.log(name)
+};
 
+const onChangeEmailHandler = (email) => {
+  setEmail(email);  
+  console.log(email);
+}
 
-//Faz a função post
+const onChangePhoneHandler = (phone) => {
+  setPhone(phone);  
+  console.log(phone);
+};
 
-
-
-//Agora cada text input tu add onChangeText={onChangeEmailHandler}
-
-
-
-//E no botão TouchAbleopacity de enviar tu coloca onPress={() => navigation.navigate("LoginScreen")}
-
-
-
+const postIndication = async (event) => {
+await api.post('indicates',{
+  name:name,
+  email:email,
+  phone:phone
+}).then((response) =>{
+  console.log(response.data)
+}).catch(err => console.error(err))
+}
 
   return (
     <View style={styles.container}>
@@ -49,8 +62,8 @@ export default function Indication() {
         <TextInput
           style={styles.inputBackground}
           placeholder="Digite seu nome"
-          onChangeText={(text) => setName(text)}
-          value={name}
+          onChangeText={onChangeNameHandler}
+          
         />
       </View>
       <View style={styles.infoCard}>
@@ -58,8 +71,8 @@ export default function Indication() {
         <TextInput
           style={styles.inputBackground}
           placeholder="Digite seu e-mail"
-          onChangeText={(text) => setEmail(text)}
-          value={email}
+          onChangeText={onChangeEmailHandler}
+    
         />
       </View>
       <View style={styles.infoCard}>
@@ -67,14 +80,13 @@ export default function Indication() {
         <TextInput
           style={styles.inputBackground}
           placeholder="Digite seu telefone"
-          onChangeText={(text) => setPhone(text)}
-          value={phone}
+          onChangeText={onChangePhoneHandler}
         />
       </View>
       <View style={styles.indiqueButtonContainer}>
         <TouchableOpacity
           style={styles.indiqueButton}
-          onPress={handleIndiquePessoa}
+          onPress={() => postIndication()}
         >
           <Text style={styles.indiqueButtonText}>Indique já</Text>
         </TouchableOpacity>
