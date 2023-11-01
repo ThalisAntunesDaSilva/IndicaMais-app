@@ -25,8 +25,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   firstContainer: {
-    flex: 10,
-    justifyContent: 'flex-start',
+    flex: 50,
   },
   secondContainer: {
     flex: 1,
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: '#fff',
-    borderRadius: 20,
+    borderRadius: 10,
   },
   itemText: {
     fontWeight: 'bold',
@@ -79,21 +78,22 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   editButton: {
-    width: 75,
+    width: 60,
     height: 40,
-    borderRadius: 20,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#EC4760',
     marginRight: -100,
   },
   deleteButton: {
-    width: 75,
+    width: 60,
     height: 40,
-    borderRadius: 20,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#EC4760',
+    marginRight: 5,
   },
   buttonText: {
     color: 'white',

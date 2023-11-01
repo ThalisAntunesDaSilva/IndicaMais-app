@@ -5,11 +5,25 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 
 export default function Rewards({ navigation }) {
+
   const [data, setData] = useState([
     { id: '1', text: 'Item 1' },
     { id: '2', text: 'Item 2' },
     // Adicione mais itens conforme necessário
   ]);
+
+  const addImageToRewards = (imageUri) => {
+    // Crie um novo item com uma ID única (você pode usar algum método de geração de ID único)
+    const newItem = {
+      id: generateUniqueID(), // Implemente a lógica para gerar um ID único
+      text: 'Nova Recompensa', // Nome padrão da recompensa
+      image: imageUri, // Adicione a imagem à recompensa
+    };
+
+    // Atualize o estado de dados para incluir o novo item
+    setData((prevData) => [...prevData, newItem]);
+  };
+
 
   const handleEditPress = (itemId) => {
     // Implemente a lógica para editar o item com o ID especificado
@@ -28,13 +42,12 @@ export default function Rewards({ navigation }) {
       <Text>{item.text}</Text>
       <TouchableOpacity onPress={() => handleEditPress(item.id)}>
         <View style={styles.editButton}>
-          <FeatherIcon name="edit" size={16} color="#fff" />
-          <Text style={styles.buttonText}>Editar</Text>
+          <Ionicons name="create" size={24} color="black" />
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => handleDeletePress(item.id)}>
         <View style={styles.deleteButton}>
-          <Text style={styles.buttonText}>Apagar</Text>
+          <Ionicons name="trash" size={24} color="black" />
         </View>
       </TouchableOpacity>
     </View>
@@ -61,7 +74,7 @@ export default function Rewards({ navigation }) {
           <TouchableOpacity
             style={styles.addButton}
             onPress={() => {
-              navigation.navigate("AddReward");
+              navigation.navigate("RewardAdd");
             }}
           >
             <Ionicons name="add" size={28} color="#fff" />

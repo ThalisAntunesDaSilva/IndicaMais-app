@@ -7,7 +7,7 @@ import api from "../../services/api.js"
 
 export default function Indication() {
 
-const [name, setName] =useState("");
+const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [phone, setPhone] = useState("");
 
