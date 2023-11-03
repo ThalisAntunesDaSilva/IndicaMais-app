@@ -16,11 +16,57 @@ const DATA = [{ id: "1", text: "Item 1" }];
 
 export default function App({ navigation }) {
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [birthday, setBirthday] = useState("");
-  const [cpf, setCpf] = useState("");
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [birthday, setBirthday] = useState("");  
+const [cpf, setCpf] = useState("");
+const [nameError, setNameError] = useState("");
+const [emailError, setEmailError] = useState("");
+const [passwordError, setPasswordError] = useState("");
+const [birthdayError, setBirthdayError] = useState("");
+const [cpfError, setCpfError] = useState("");
+
+const validateFields = () => {
+  let valid = true;
+
+  if (name.trim() === "") {
+    setNameError("Campo obrigatório");
+    valid = false;
+  } else {
+    setNameError("");
+  }
+
+  if (email.trim() === "") {
+    setEmailError("Campo obrigatório");
+    valid = false;
+  } else {
+    setEmailError("");
+  }
+
+  if (password.trim() === "") {
+    setPasswordError("Campo obrigatório");
+    valid = false;
+  } else {
+    setPasswordError("");
+  }
+
+  if (birthday.trim() === "") {
+    setBirthdayError("Campo obrigatório");
+    valid = false;
+  } else {
+    setBirthdayError("");
+  }
+
+  if (cpf.trim() === "") {
+    setCpfError("Campo obrigatório");
+    valid = false;
+  } else {
+    setCpfError("");
+  }
+
+  return valid;
+};
 
   const onChangeNameHandler = (name) => {
     setName(name);
@@ -48,6 +94,7 @@ export default function App({ navigation }) {
   };
 
  const postUsers = async (event) => {
+  if (validateFields()) {
   await api.post(`users`, {
    name: name,
    email: email,
@@ -57,6 +104,7 @@ export default function App({ navigation }) {
   }).then((response) => {
     console.log(response.data)
   }).catch(err => console.error(err))
+}
  }
 
 
@@ -72,9 +120,11 @@ export default function App({ navigation }) {
             <Text style={styles.inputRegister}> Nome </Text>
             
             <TextInput style={styles.input} placeholder=""  onChangeText={onChangeNameHandler}/>
+            { nameError && <Text style={styles.errorMessage}>{nameError}</Text> }
 
             <Text style={styles.inputRegister}> E-mail </Text>
             <TextInput style={styles.input} placeholder=""  onChangeText={onChangeEmailHandler}/>
+            { emailError && <Text style={styles.errorMessage}>{emailError}</Text> }
 
             <Text style={styles.inputRegister}> Senha </Text>
             <TextInput
@@ -83,6 +133,8 @@ export default function App({ navigation }) {
               secureTextEntry={true}
               onChangeText={onChangePasswordHandler}
             />
+            {passwordError && <Text style={styles.errorMessage}>{passwordError}</Text>}
+
 
             <Text style={styles.inputRegister}> Confirmar senha </Text>
             <TextInput
@@ -90,12 +142,13 @@ export default function App({ navigation }) {
               placeholder=""
               secureTextEntry={true}
             />
-
+          
             <Text style={styles.inputRegister}> Aniversário </Text>
             <TextInput style={styles.input} placeholder=""  onChangeText={onChangeBirthdayHandler}/>
-
+            {birthdayError && <Text style={styles.errorMessage}>{birthdayError}</Text>}
             <Text style={styles.inputRegister}> CPF </Text>
             <TextInput style={styles.input} placeholder="" onChangeText={onChangeCpfHandler}/>
+            {cpfError && <Text style={styles.errorMessage}>{cpfError}</Text>}
           </View>
         )}
       />

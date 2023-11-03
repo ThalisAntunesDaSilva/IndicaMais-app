@@ -81,4 +81,12 @@ export default StyleSheet.create({
     marginLeft: 5,
     fontFamily: "Alata-Regular",
   },
+  errorMessage: {
+    color: "red",
+    fontSize: 14,
+  },
+  errorInput: {
+    borderColor: "red", // Define a cor da borda para vermelho em caso de erro
+  }
+  
 });
