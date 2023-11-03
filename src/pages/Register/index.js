@@ -8,14 +8,17 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Modal,
+  Pressable
 } from "react-native";
 import styles from "./styles.js";
 import api from "../../services/api.js"
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 const DATA = [{ id: "1", text: "Item 1" }];
 
 export default function App({ navigation }) {
-
+const [modalVisible, setModalVisible] = useState(false);
 const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
@@ -26,8 +29,76 @@ const [emailError, setEmailError] = useState("");
 const [passwordError, setPasswordError] = useState("");
 const [birthdayError, setBirthdayError] = useState("");
 const [cpfError, setCpfError] = useState("");
+const [isAdmin, setIsAdmin] = useState(false);
 
-const validateFields = () => {
+const toggleAdminCheckbox = () => {
+  setIsAdmin(!isAdmin); 
+  console.log(isAdmin)
+};
+
+  const onChangeNameHandler = (name) => {
+    setName(name);
+    console.log(name)
+  };
+    
+  function toggleModalSucess(){
+    setModalVisible(!modalVisible);
+    navigation.navigate('LoginScreen');
+  }
+
+  const onChangeEmailHandler = (email) => {
+    setEmail(email);
+    console.log(email)
+  };
+
+  const onChangePasswordHandler = (password) => {
+    setPassword(password);
+    console.log(password)
+  };
+
+
+  const onChangeBirthdayHandler = (text) => {
+    const numericText = text.replace(/\D/g, '');
+  
+    if (numericText.length <= 2) {
+      setBirthday(numericText);
+    } else if (numericText.length <= 4) {
+      setBirthday(`${numericText.slice(0, 2)}/${numericText.slice(2)}`);
+    } else if (numericText.length > 4) {
+      setBirthday(`${numericText.slice(0, 2)}/${numericText.slice(2, 4)}/${numericText.slice(4, 8)}`);
+
+    }
+  };
+  
+
+  const onChangeCpfHandler = (cpf) => {
+    setCpf(cpf);
+    console.log(cpf)
+  };
+
+  const postUsers = async (event) => {
+    if (validateFields()) {
+      const payload = {
+        name: name,
+        email: email,
+        password: password,
+        birthday: birthday,
+        cpf: cpf,
+        isAdmin: isAdmin,
+      };
+  
+      console.log(payload);
+      try {
+        const response = await api.post("users", payload);
+        console.log(response.data);
+        setModalVisible(true);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
+
+ const validateFields = () => {
   let valid = true;
 
   if (name.trim() === "") {
@@ -68,45 +139,6 @@ const validateFields = () => {
   return valid;
 };
 
-  const onChangeNameHandler = (name) => {
-    setName(name);
-    console.log(name)
-  };
-
-  const onChangeEmailHandler = (email) => {
-    setEmail(email);
-    console.log(email)
-  };
-
-  const onChangePasswordHandler = (password) => {
-    setPassword(password);
-    console.log(password)
-  };
-
-  const onChangeBirthdayHandler = (birthday) => {
-    setBirthday(birthday);
-    console.log(birthday)
-  };
-
-  const onChangeCpfHandler = (cpf) => {
-    setCpf(cpf);
-    console.log(cpf)
-  };
-
- const postUsers = async (event) => {
-  if (validateFields()) {
-  await api.post(`users`, {
-   name: name,
-   email: email,
-   password: password,
-   birthday: birthday,
-   cpf: cpf
-  }).then((response) => {
-    console.log(response.data)
-  }).catch(err => console.error(err))
-}
- }
-
 
   return (
     <View style={styles.container}>
@@ -117,6 +149,17 @@ const validateFields = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={{ padding: 16 }}>
+            <Text style={styles.inputRegister}> É proprietário? </Text>
+          
+           
+  <BouncyCheckbox fillColor="red"
+ 
+  text="Sim"
+ 
+  onPress={() => toggleAdminCheckbox()} />
+
+          
+
             <Text style={styles.inputRegister}> Nome </Text>
             
             <TextInput style={styles.input} placeholder=""  onChangeText={onChangeNameHandler}/>
@@ -144,7 +187,7 @@ const validateFields = () => {
             />
           
             <Text style={styles.inputRegister}> Aniversário </Text>
-            <TextInput style={styles.input} placeholder=""  onChangeText={onChangeBirthdayHandler}/>
+            <TextInput style={styles.input}  placeholder="formato DD/MM/YYYY, apenas números"  onChangeText={onChangeBirthdayHandler}/>
             {birthdayError && <Text style={styles.errorMessage}>{birthdayError}</Text>}
             <Text style={styles.inputRegister}> CPF </Text>
             <TextInput style={styles.input} placeholder="" onChangeText={onChangeCpfHandler}/>
@@ -168,6 +211,27 @@ const validateFields = () => {
       </View>
 
       <StatusBar style="auto" />
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Cadastro realizado com sucesso</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => toggleModalSucess()}>
+              <Text style={styles.textStyle}>Continuar</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+      
     </View>
   );
 }
