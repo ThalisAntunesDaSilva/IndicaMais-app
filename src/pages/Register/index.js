@@ -41,10 +41,6 @@ const toggleAdminCheckbox = () => {
     console.log(name)
   };
     
-  function toggleModalSucess(){
-    setModalVisible(!modalVisible);
-    navigation.navigate('LoginScreen');
-  }
 
   const onChangeEmailHandler = (email) => {
     setEmail(email);
@@ -97,6 +93,17 @@ const toggleAdminCheckbox = () => {
       }
     }
   };
+
+  function toggleModalSucess(){
+    if(isAdmin) {
+      navigation.navigate('QrCode');
+    }else{
+      navigation.navigate('LoginScreen');
+    }
+    setModalVisible(!modalVisible);
+   
+  }
+
 
  const validateFields = () => {
   let valid = true;

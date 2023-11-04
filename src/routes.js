@@ -9,6 +9,7 @@ import Indication from "./pages/Indication";
 import Indications from "./pages/Indications/index";
 import Rewards from "./pages/Rewards";
 import RewardAdd from "./pages/RewardAdd";
+import QrCode from "./pages/QrCode"
 
 export default function Routes() {
     return (
@@ -16,6 +17,7 @@ export default function Routes() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Indication" component={Indication} />
+        <Stack.Screen name="QrCode" component={QrCode} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="Indications" component={Indications} />
