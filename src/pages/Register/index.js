@@ -205,7 +205,7 @@ const toggleAdminCheckbox = () => {
 
       <TouchableOpacity
         style={styles.buttonRegister}
-        onPress={() =>  postUsers()}
+        onPress={() => postUsers()}
       >
         <Text style={styles.buttonRegisterText}>Cadastre-se</Text>
       </TouchableOpacity>
