@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import Routes from './src/routes';
 import { useFonts  } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import {ContextProvider} from "./src/context/AuthContext"
 
 
 
@@ -18,7 +19,9 @@ export default function App(){
 
 
   return(
+    <ContextProvider>
 <Routes onLayout={fontsLoaded}/>
+</ContextProvider>
   );
 
 }

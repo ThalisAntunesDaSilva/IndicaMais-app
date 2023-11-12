@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
-function ContextProvider({children}){
+export function ContextProvider({children}){
     const [token, setToken ] = useState("")
 
 
