@@ -3,25 +3,25 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Modal, Alert } fro
 import { Feather } from '@expo/vector-icons';
 import styles from "./styles";
 import api from "../../services/api"
+import { useContextProvider } from "../../context/AuthContext";
 
 export default function LoginScreen({ navigation }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
-
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState('');
-
   const [modalVisible, setModalVisible] = useState(false);
   const [loginStatus, setLoginStatus] = useState(null); 
+  const {setToken} = useContextProvider()
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-   
   const toggleModalSucess = () => {
     setModalVisible(!modalVisible);
-  };
+    navigation.navigate('Home');
 
+  };
 
   const onChangeEmailHandler = (email) => {
     setEmail(email);
@@ -45,7 +45,8 @@ export default function LoginScreen({ navigation }) {
       console.log(payload)
       const response = await api.post('login', payload)
       
-      console.log(response.status + response.data)
+      setToken(response.data.token)
+     
       
 
       const status = response.status;

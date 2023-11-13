@@ -3,15 +3,24 @@ import { View, Text, TouchableOpacity, TextInput, StatusBar, FlatList } from 're
 import { Feather } from '@expo/vector-icons';
 import api from "../../services/api";
 import styles from "./styles";
+import { useContextProvider } from "../../context/AuthContext";
 
 const IndicationsList = ({ navigation }) => {
   const [isSearchFocused, setSearchFocused] = useState(false);
   const [indications, setIndications] = useState([]);
+  const {token} = useContextProvider()
 
   useEffect(() => {
+    
     async function fetchIndications() {
       try {
-        const response = await api.get('indications');
+        const response = await api.get('indications',{
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.log(response.data)
+
         setIndications(response.data);
         console.log('Indications:', response.data);
       } catch (error) {
@@ -21,6 +30,7 @@ const IndicationsList = ({ navigation }) => {
 
     fetchIndications();
   }, []);
+
 
   const onFocusSearch = () => {
     setSearchFocused(true);
@@ -56,9 +66,9 @@ const IndicationsList = ({ navigation }) => {
 
           <FlatList
             data={indications}
-            keyExtractor={(item, index) => index.toString()} 
-            renderItem={({ item }) => (
-              <View style={styles.item} key={item.email}> {/* Use a unique key */}
+            keyExtractor={(item, index) => String(item.id)} 
+            renderItem={({ item, index }) => (
+              <View style={styles.item}> 
                 <Text style={styles.title}>{item.name}</Text>
                 <Text style={styles.date}>Email: {item.email}</Text>
                 <Text style={styles.status}>Status: {item.indicationStatus}</Text>
