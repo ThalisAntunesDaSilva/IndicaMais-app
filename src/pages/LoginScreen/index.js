@@ -2,45 +2,63 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Modal, Alert } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import styles from "./styles";
+import api from "../../services/api"
 
 export default function LoginScreen({ navigation }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState('');
+
   const [modalVisible, setModalVisible] = useState(false);
-  const [loginStatus, setLoginStatus] = useState(null); // Status da requisição
+  const [loginStatus, setLoginStatus] = useState(null); 
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
+   
   const toggleModalSucess = () => {
     setModalVisible(!modalVisible);
   };
 
+
+  const onChangeEmailHandler = (email) => {
+    setEmail(email);
+    console.log(email)
+  };
+
+  const onChangePasswordHandler = (password) => {
+    setPassword(password);
+    console.log(password)
+  };
+
+
   const handleLogin = async () => {
+  
+    const payload = {
+      email: email,
+      password: password
+    }
+  
     try {
-      const response = await fetch('sua_url_de_login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: 'seu_email',
-          senha: password,
-        }),
-      });
+      console.log(payload)
+      const response = await api.post('login', payload)
+      
+      console.log(response.status + response.data)
+      
 
       const status = response.status;
 
       if (status === 200 || status === 201) {
-        // Login com sucesso
+        
         setLoginStatus('success');
       } else {
-        // Login falhou
+        
         setLoginStatus('failed');
       }
     } catch (error) {
-      // Ocorreu um erro na requisição
+
       console.error('Erro na requisição:', error);
       setLoginStatus('failed');
     } finally {
@@ -53,7 +71,8 @@ export default function LoginScreen({ navigation }) {
       <Text style={styles.title}>Login</Text>
       <View style={styles.form}>
         <Text style={styles.inputLabel}>E-mail</Text>
-        <TextInput style={styles.input} placeholder="Digite seu e-mail" />
+        <TextInput style={styles.input} placeholder="Digite seu e-mail" 
+         onChangeText={onChangeEmailHandler}/>
 
         <Text style={styles.inputLabel}>Senha</Text>
         <View style={styles.passwordInputContainer}>
@@ -62,7 +81,7 @@ export default function LoginScreen({ navigation }) {
             placeholder="Digite sua senha"
             secureTextEntry={!passwordVisible}
             value={password}
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={onChangePasswordHandler}
           />
           <TouchableOpacity onPress={togglePasswordVisibility} style={styles.passwordIconContainer}>
             <Feather name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="gray" />
@@ -90,8 +109,8 @@ export default function LoginScreen({ navigation }) {
           Alert.alert('Modal has been closed.');
           setModalVisible(!modalVisible);
         }}>
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
             {loginStatus === 'success' ? (
               <Text>Login realizado com sucesso!</Text>
             ) : (
