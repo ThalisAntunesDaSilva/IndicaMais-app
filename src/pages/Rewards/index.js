@@ -1,55 +1,59 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, FlatList, StatusBar } from 'react-native';
-import { Feather } from '@expo/vector-icons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import styles from './styles';
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  StatusBar,
+} from "react-native";
+import { Feather } from "@expo/vector-icons";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import styles from "./styles";
+import api from "../../services/api";
+import { useContextProvider } from "../../context/AuthContext";
 
 export default function Rewards({ navigation }) {
+  const { isAdmin, token } = useContextProvider();
 
-  const [data, setData] = useState([
-    { id: '1', text: 'Item 1' },
-    { id: '2', text: 'Item 2' },
-    // Adicione mais itens conforme necessário
-  ]);
+  const [rewards, setRewards] = useState([]);
 
-  const addImageToRewards = (imageUri) => {
-    // Crie um novo item com uma ID única (você pode usar algum método de geração de ID único)
-    const newItem = {
-      id: generateUniqueID(), // Implemente a lógica para gerar um ID único
-      text: 'Nova Recompensa', // Nome padrão da recompensa
-      image: imageUri, // Adicione a imagem à recompensa
-    };
+  useEffect(() => {
+    async function fetchRewards() {
+      try {
+        const response = await api.get("recompensas", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.log(response.data);
 
-    // Atualize o estado de dados para incluir o novo item
-    setData((prevData) => [...prevData, newItem]);
-  };
+        setRewards(response.data);
+        console.log("rewards:", response.data);
+      } catch (error) {
+        console.error("Error fetching indications:", error);
+      }
+    }
 
-
-  const handleEditPress = (itemId) => {
-    // Implemente a lógica para editar o item com o ID especificado
-    console.log(`Editar o item com ID ${itemId}`);
-  };
-
-  const handleDeletePress = (itemId) => {
-    // Implemente a lógica para apagar o item com o ID especificado
-    console.log(`Apagar o item com ID ${itemId}`);
-    // Atualize o estado para refletir a remoção do item da lista
-    setData((prevData) => prevData.filter((item) => item.id !== itemId));
-  };
+    fetchRewards();
+  }, []);
 
   const renderItem = ({ item }) => (
     <View style={styles.listItem}>
       <Text>{item.text}</Text>
-      <TouchableOpacity onPress={() => handleEditPress(item.id)}>
-        <View style={styles.editButton}>
-          <Ionicons name="create" size={24} color="black" />
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleDeletePress(item.id)}>
-        <View style={styles.deleteButton}>
-          <Ionicons name="trash" size={24} color="black" />
-        </View>
-      </TouchableOpacity>
+      {isAdmin && (
+        <TouchableOpacity onPress={() => handleEditPress(item.id)}>
+          <View style={styles.editButton}>
+            <Ionicons name="create" size={24} color="black" />
+          </View>
+        </TouchableOpacity>
+      )}
+      {isAdmin && (
+        <TouchableOpacity onPress={() => handleDeletePress(item.id)}>
+          <View style={styles.deleteButton}>
+            <Ionicons name="trash" size={24} color="black" />
+          </View>
+        </TouchableOpacity>
+      )}
     </View>
   );
 
@@ -59,7 +63,7 @@ export default function Rewards({ navigation }) {
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.backButton}
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate("Home")}
         >
           <Feather name="arrow-left" size={16} color="black" />
           <Text style={styles.backText}>Voltar</Text>
@@ -71,20 +75,27 @@ export default function Rewards({ navigation }) {
           <Text style={styles.titleScore}>Pontuação: </Text>
         </View>
         <View style={styles.secondContainer}>
-          <TouchableOpacity
-            style={styles.addButton}
-            onPress={() => {
-              navigation.navigate("RewardAdd");
-            }}
-          >
-            <Ionicons name="add" size={28} color="#fff" />
-          </TouchableOpacity>
+          {isAdmin && (
+            <TouchableOpacity
+              style={styles.addButton}
+              onPress={() => {
+                navigation.navigate("RewardAdd");
+              }}
+            >
+              <Ionicons name="add" size={28} color="#fff" />
+            </TouchableOpacity>
+          )}
         </View>
       </View>
       <FlatList
-        data={data}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
+        data={rewards}
+        keyExtractor={(item, index) => String(item.id)}
+        renderItem={({ item, index }) => (
+          <View style={styles.item}>
+            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.date}>Email: {item.pontos}</Text>
+          </View>
+        )}
       />
     </View>
   );

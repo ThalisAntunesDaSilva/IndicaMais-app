@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Modal, Alert } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Modal,
+  Alert,
+} from "react-native";
+import { Feather } from "@expo/vector-icons";
 import styles from "./styles";
-import api from "../../services/api"
+import api from "../../services/api";
 import { useContextProvider } from "../../context/AuthContext";
 
 export default function LoginScreen({ navigation }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
-  const [loginStatus, setLoginStatus] = useState(null); 
-  const {setToken} = useContextProvider()
+  const [loginStatus, setLoginStatus] = useState(null);
+  const { setToken, setName, setIsAdmin } = useContextProvider();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -19,49 +27,44 @@ export default function LoginScreen({ navigation }) {
 
   const toggleModalSucess = () => {
     setModalVisible(!modalVisible);
-    navigation.navigate('Home');
-
+    navigation.navigate("Home");
   };
 
   const onChangeEmailHandler = (email) => {
     setEmail(email);
-    console.log(email)
+    console.log(email);
   };
 
   const onChangePasswordHandler = (password) => {
     setPassword(password);
-    console.log(password)
+    console.log(password);
   };
 
-
   const handleLogin = async () => {
-  
     const payload = {
       email: email,
-      password: password
-    }
-  
+      password: password,
+    };
+
     try {
-      console.log(payload)
-      const response = await api.post('login', payload)
-      
-      setToken(response.data.token)
-     
-      
+      console.log(payload);
+      const response = await api.post("login", payload);
+
+      setToken(response.data.token);
+      setName(response.data.login.name);
+      setIsAdmin(response.data.login.isAdmin);
+      console.log("NOME DO LOGIN" + response.data.login.name);
 
       const status = response.status;
 
       if (status === 200 || status === 201) {
-        
-        setLoginStatus('success');
+        setLoginStatus("success");
       } else {
-        
-        setLoginStatus('failed');
+        setLoginStatus("failed");
       }
     } catch (error) {
-
-      console.error('Erro na requisição:', error);
-      setLoginStatus('failed');
+      console.error("Erro na requisição:", error);
+      setLoginStatus("failed");
     } finally {
       setModalVisible(true);
     }
@@ -72,8 +75,11 @@ export default function LoginScreen({ navigation }) {
       <Text style={styles.title}>Login</Text>
       <View style={styles.form}>
         <Text style={styles.inputLabel}>E-mail</Text>
-        <TextInput style={styles.input} placeholder="Digite seu e-mail" 
-         onChangeText={onChangeEmailHandler}/>
+        <TextInput
+          style={styles.input}
+          placeholder="Digite seu e-mail"
+          onChangeText={onChangeEmailHandler}
+        />
 
         <Text style={styles.inputLabel}>Senha</Text>
         <View style={styles.passwordInputContainer}>
@@ -84,8 +90,15 @@ export default function LoginScreen({ navigation }) {
             value={password}
             onChangeText={onChangePasswordHandler}
           />
-          <TouchableOpacity onPress={togglePasswordVisibility} style={styles.passwordIconContainer}>
-            <Feather name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="gray" />
+          <TouchableOpacity
+            onPress={togglePasswordVisibility}
+            style={styles.passwordIconContainer}
+          >
+            <Feather
+              name={passwordVisible ? "eye-off" : "eye"}
+              size={24}
+              color="gray"
+            />
           </TouchableOpacity>
         </View>
 
@@ -101,18 +114,18 @@ export default function LoginScreen({ navigation }) {
         </TouchableOpacity>
       </View>
 
-
       <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
+          Alert.alert("Modal has been closed.");
           setModalVisible(!modalVisible);
-        }}>
+        }}
+      >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            {loginStatus === 'success' ? (
+            {loginStatus === "success" ? (
               <Text>Login realizado com sucesso!</Text>
             ) : (
               <Text>Login falhou. Tente novamente.</Text>
