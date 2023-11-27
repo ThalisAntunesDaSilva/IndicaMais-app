@@ -49,6 +49,7 @@ export default function AddReward({ navigation }) {
       );
 
       console.log(response.data);
+      navigation.navigate("Rewards")
     } catch (err) {
       console.error(err);
     }
@@ -70,29 +71,39 @@ export default function AddReward({ navigation }) {
         <View style={styles.firstContainer}>
           <Text style={styles.title}>Adicione uma recompensa</Text>
         </View>
+
       </View>
+
+
+  
+
       <View style={styles.form}>
-        <Text style={styles.label}>Nome do Item</Text>
-        <View style={styles.inputContainer}>
-          <TextInput style={styles.input} onChangeText={onChangeNameHandler} />
-        </View>
-        <Text style={styles.label}>Pontuação</Text>
-        <View style={styles.inputContainer}>
+     
+     
+        <TextInput
+          style={styles.input}
+          placeholder="Nome da recompensa"
+          onChangeText={onChangeNameHandler}
+ 
+        />
+
+
+    
           <TextInput
             style={styles.input}
+            placeholder="Pontuação"
             onChangeText={onChangePontosHandler}
-            keyboardType="numeric"
+      
           />
-        </View>
-        <View style={styles.addImage}>
-          <TouchableOpacity
-            style={styles.addImageButton}
-            onPress={() => postRewards()}
-          >
-            <Text style={styles.buttonText}>Adicionar</Text>
-          </TouchableOpacity>
-        </View>
+       
+    
+
+        <TouchableOpacity style={styles.loginButton} onPress={postRewards}>
+          <Text style={styles.loginButtonText}>Cadastrar</Text>
+        </TouchableOpacity>
       </View>
+   
+   
     </View>
   );
 }

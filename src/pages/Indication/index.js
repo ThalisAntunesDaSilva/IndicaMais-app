@@ -43,7 +43,7 @@ await api.post('indicates',{
         <Text style={styles.title}>Indique uma pessoa</Text>
       </View>
       {/* Logos */}
-      <View style={styles.logosContainer}>
+      {/* <View style={styles.logosContainer}>
         <TouchableOpacity style={styles.indiqueButton}>
           <Text style={styles.indiqueButtonText}>Indique um contato do Facebook</Text>
           <Image source={facebook} />
@@ -53,7 +53,7 @@ await api.post('indicates',{
           <Image source={gmail} />
         </TouchableOpacity>
         <Text style={styles.titleFormulario}>Ou preencha o formulário</Text>
-      </View>
+      </View> */}
 
       {/* Form */}
       <View style={styles.form}>

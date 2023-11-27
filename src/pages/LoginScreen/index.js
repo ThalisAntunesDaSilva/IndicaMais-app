@@ -25,10 +25,18 @@ export default function LoginScreen({ navigation }) {
     setPasswordVisible(!passwordVisible);
   };
 
+
   const toggleModalSucess = () => {
-    setModalVisible(!modalVisible);
-    navigation.navigate("Home");
-  };
+  
+    if (loginStatus === 'success') {
+      setModalVisible(!modalVisible);
+  navigation.navigate('Home');
+    } else if (loginStatus === 'failed') {
+      setModalVisible(!modalVisible);
+    }
+  
+
+};
 
   const onChangeEmailHandler = (email) => {
     setEmail(email);
@@ -130,8 +138,8 @@ export default function LoginScreen({ navigation }) {
             ) : (
               <Text>Login falhou. Tente novamente.</Text>
             )}
-            <TouchableOpacity onPress={toggleModalSucess}>
-              <Text>Fechar</Text>
+               <TouchableOpacity style={styles.buttonCloseModalLogin} onPress={toggleModalSucess}>
+              <Text style={styles.buttonTextCloseModalLogin}>Fechar</Text>
             </TouchableOpacity>
           </View>
         </View>

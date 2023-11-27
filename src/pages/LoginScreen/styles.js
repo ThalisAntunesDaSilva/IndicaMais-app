@@ -127,6 +127,23 @@ export default StyleSheet.create({
     shadowOffset: {
       width: 0,
       height: 2,
-    },}
+    },},
+    buttonCloseModalLogin:{
+      marginTop: 20,
+      fontFamily: 'Alata-Regular',
+      backgroundColor: '#EC4760',
+      width: 90,
+      height: 30,
+    borderRadius: '50%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  
+    },
+    buttonTextCloseModalLogin:{
+      fontWeight: 'bold',
+      color: 'white',
+    },
 });
   

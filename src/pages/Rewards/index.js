@@ -17,45 +17,42 @@ export default function Rewards({ navigation }) {
 
   const [rewards, setRewards] = useState([]);
 
-  useEffect(() => {
-    async function fetchRewards() {
-      try {
-        const response = await api.get("recompensas", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        console.log(response.data);
+  async function handleDelete(id){
+    try{
+    const response = await api.delete(`recompensa/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(response.data);
+   
+  } catch (error) {
+    console.error("Error delete rewards:", error);
+  }
+  }
 
-        setRewards(response.data);
-        console.log("rewards:", response.data);
-      } catch (error) {
-        console.error("Error fetching indications:", error);
-      }
+  async function fetchRewards() {
+    try {
+      const response = await api.get("recompensas", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data);
+
+      setRewards(response.data);
+      console.log("rewards:", response.data);
+    } catch (error) {
+      console.error("Error fetching indications:", error);
     }
+  }
 
+
+  useEffect(() => {
+   
     fetchRewards();
-  }, []);
+  }, [rewards]);
 
-  const renderItem = ({ item }) => (
-    <View style={styles.listItem}>
-      <Text>{item.text}</Text>
-      {isAdmin && (
-        <TouchableOpacity onPress={() => handleEditPress(item.id)}>
-          <View style={styles.editButton}>
-            <Ionicons name="create" size={24} color="black" />
-          </View>
-        </TouchableOpacity>
-      )}
-      {isAdmin && (
-        <TouchableOpacity onPress={() => handleDeletePress(item.id)}>
-          <View style={styles.deleteButton}>
-            <Ionicons name="trash" size={24} color="black" />
-          </View>
-        </TouchableOpacity>
-      )}
-    </View>
-  );
 
   return (
     <View style={styles.container}>
@@ -72,7 +69,7 @@ export default function Rewards({ navigation }) {
       <View style={styles.topContainer}>
         <View style={styles.firstContainer}>
           <Text style={styles.title}>Recompensas</Text>
-          <Text style={styles.titleScore}>Pontuação: </Text>
+          {/* <Text style={styles.titleScore}>Pontuação: </Text> */}
         </View>
         <View style={styles.secondContainer}>
           {isAdmin && (
@@ -92,8 +89,23 @@ export default function Rewards({ navigation }) {
         keyExtractor={(item, index) => String(item.id)}
         renderItem={({ item, index }) => (
           <View style={styles.item}>
+           <View>
             <Text style={styles.name}>{item.name}</Text>
-            <Text style={styles.date}>Email: {item.pontos}</Text>
+            <Text style={styles.date}>Pontos: {item.pontos}</Text>
+            </View>
+            {isAdmin && (
+        <TouchableOpacity>
+          <Feather
+            name="trash"
+            size={30}
+            color="#000000"
+            onPress={() => handleDelete(item.id)}
+          />
+        </TouchableOpacity>
+      )}
+  
+
+
           </View>
         )}
       />

@@ -8,28 +8,43 @@ import { useContextProvider } from "../../context/AuthContext";
 const IndicationsList = ({ navigation }) => {
   const [isSearchFocused, setSearchFocused] = useState(false);
   const [indications, setIndications] = useState([]);
-  const {token} = useContextProvider()
+  const { isAdmin ,token} = useContextProvider()
+
+  // async function handleDelete(id){
+
+  //   try{
+  //   const response = await api.delete(`users/${id}`, {
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   });
+  //   console.log(response.data);
+   
+  // } catch (error) {
+  //   console.error("Error delete indications:", error);
+  // }
+  // }
+
+  async function fetchIndications() {
+    try {
+      const response = await api.get('indications',{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data)
+
+      setIndications(response.data);
+      console.log('Indications:', response.data);
+    } catch (error) {
+      console.error('Error fetching indications:', error);
+    }
+  }
+
 
   useEffect(() => {
-    
-    async function fetchIndications() {
-      try {
-        const response = await api.get('indications',{
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        console.log(response.data)
-
-        setIndications(response.data);
-        console.log('Indications:', response.data);
-      } catch (error) {
-        console.error('Error fetching indications:', error);
-      }
-    }
-
     fetchIndications();
-  }, []);
+  }, [indications]);
 
 
   const onFocusSearch = () => {
@@ -43,15 +58,16 @@ const IndicationsList = ({ navigation }) => {
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => navigation.navigate('Home')}
-        >
+        > 
           <Feather name="arrow-left" size={16} color="black" />
           <Text style={styles.backText}>Voltar</Text>
         </TouchableOpacity>
-        <Text style={styles.title}> Indicações (Teste)</Text>
+        <Text style={styles.title}> Indicações</Text>
       </View>
 
       <View style={styles.content}>
-        <View style={styles.searchBar}>
+       
+        {/* <View style={styles.searchBar}>
           {!isSearchFocused && (
             <Feather name="search" size={16} color="gray" style={styles.searchIcon} />
           )}
@@ -59,10 +75,9 @@ const IndicationsList = ({ navigation }) => {
             style={styles.searchInput}
             onFocus={onFocusSearch}
           />
-        </View>
+        </View> */}
 
         <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>Indicações</Text>
 
           <FlatList
             data={indications}
@@ -72,9 +87,20 @@ const IndicationsList = ({ navigation }) => {
                 <Text style={styles.title}>{item.name}</Text>
                 <Text style={styles.date}>Email: {item.email}</Text>
                 <Text style={styles.status}>Status: {item.indicationStatus}</Text>
+              
+                {/* {isAdmin && (
+        <TouchableOpacity>
+          <Feather
+            name="trash"
+            size={30}
+            color="#000000"
+            onPress={() => handleDelete(item.id)}
+          />
+        </TouchableOpacity>
+      )} */}
               </View>
             )}
-          />
+          /> 
         </View>
       </View>
     </View>

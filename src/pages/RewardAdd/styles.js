@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     },
     backText: {
         marginLeft: 5,
-        // fontFamily: 'Alata-Regular'
+         fontFamily: 'Alata-Regular'
     },
     topContainer: {
         flexDirection: 'row',
@@ -26,7 +26,10 @@ const styles = StyleSheet.create({
       },
       firstContainer: {
         flex: 10,
-        justifyContent: 'flex-start',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
       },
       inputContainer: {
         borderWidth: 1,
@@ -35,22 +38,51 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
       },
       input: {
-        color: 'gray',
+        width: '100%',
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginBottom: 10,
+        paddingHorizontal: 10,
+        backgroundColor: 'white',
+        borderRadius: 10,
       },
       title: {
         paddingTop: 20,
         fontSize: 28,
         fontWeight: 'bold',
         fontFamily: 'Alata-Regular',
+       
       },
       form: {
         marginTop: 40,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+   alignItems: 'center',
       },
       label: {
         alignItems: 'center',
         justifyContent: 'center',
         color: 'gray',
       },
+      loginButton: {
+        marginTop: 40,
+        width: '60%',
+        paddingVertical: 15,
+        paddingHorizontal: 30,
+        backgroundColor: '#EC4760',
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+
+      loginButtonText: {
+        fontFamily: 'Alata-Regular',
+        fontWeight: 'bold',
+        color: 'white',
+      },
+
       addButton: {
         borderRadius: 50,
         width: 40,

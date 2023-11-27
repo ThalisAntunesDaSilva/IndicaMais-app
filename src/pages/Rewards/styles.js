@@ -28,6 +28,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginHorizontal: 16,
     borderColor: "#FFFFFF",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: 'space-around',
     firstItem: {
       borderTopWidth: 0, // Remova a borda superior do primeiro item
       marginTop: 0, // Remova a margem superior do primeiro item

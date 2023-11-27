@@ -26,11 +26,13 @@ export default StyleSheet.create({
   },
   backText: {
     marginLeft: 8,
+    fontFamily: 'Alata-Regular'
   },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
     marginLeft: 'auto',
+    fontFamily: 'Alata-Regular'
   },
   content: {
     flex: 1,
@@ -75,13 +77,16 @@ export default StyleSheet.create({
   title: {
     fontSize: 24,
     marginBottom: 4,
+    fontFamily: 'Alata-Regular',
   },
   date: {
     fontSize: 16,
     color: 'gray',
     marginBottom: 4,
+    fontFamily: 'Alata-Regular',
   },
   status: {
     fontSize: 16,
+    fontFamily: 'Alata-Regular',
   },
 });
