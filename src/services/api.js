@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://api-guerra.onrender.com/'
+    baseURL: 'https://indiki-api.onrender.com/'
 })
 
 export default api;

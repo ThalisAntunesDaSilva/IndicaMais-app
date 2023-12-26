@@ -96,7 +96,8 @@ const toggleAdminCheckbox = () => {
 
   function toggleModalSucess(){
     if(isAdmin) {
-      navigation.navigate('QrCode');
+      //navigation.navigate('QrCode');
+      navigation.navigate('LoginScreen')
     }else{
       navigation.navigate('LoginScreen');
     }

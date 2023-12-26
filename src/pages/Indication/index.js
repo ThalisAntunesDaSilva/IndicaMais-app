@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, Text, Modal, TextInput, TouchableOpacity, Image } from 'react-native';
 import facebook from "../../assets/facebook.png";
 import gmail from "../../assets/gmail.png"
 import styles from "./styles";
 import api from "../../services/api.js"
 
 export default function Indication() {
-
+const [indicationStatus, setIndicationStatus] = useState(null);
 const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [phone, setPhone] = useState("");
+const [modalVisible, setModalVisible] = useState(false);
+
+const toggleModalSucess = () => {
+  if (indicationStatus === 'success' || indicationStatus === 'failed') {
+    setModalVisible(!modalVisible);
+    setIndicationStatus(null);
+  }
+};
+
 
 
 const onChangeNameHandler = (name) => {
@@ -28,12 +37,19 @@ const onChangePhoneHandler = (phone) => {
 };
 
 const postIndication = async (event) => {
-await api.post('indicates',{
-  name:name,
+await api.post('indications',{
+  name: "Thalis",
   email:email,
-  phone:phone
+  phone: ""
 }).then((response) =>{
-  console.log(response.data)
+  console.log(response.status)
+  if (response.status === 200 || response.status === 201) {
+
+    setIndicationStatus("success");
+    console.log(indicationStatus)
+  } else {
+    setIndicationStatus("failed");
+  }
 }).catch(err => console.error(err))
 }
 
@@ -57,7 +73,7 @@ await api.post('indicates',{
 
       {/* Form */}
       <View style={styles.form}>
-      <View style={styles.infoCard}>
+      {/* <View style={styles.infoCard}>
         <Text style={styles.infoCardLabel}>Nome</Text>
         <TextInput
           style={styles.inputBackground}
@@ -65,7 +81,7 @@ await api.post('indicates',{
           onChangeText={onChangeNameHandler}
           
         />
-      </View>
+      </View> */}
       <View style={styles.infoCard}>
         <Text style={styles.infoCardLabel}>E-mail</Text>
         <TextInput
@@ -75,14 +91,14 @@ await api.post('indicates',{
     
         />
       </View>
-      <View style={styles.infoCard}>
+      {/* <View style={styles.infoCard}>
         <Text style={styles.infoCardLabel}>Telefone</Text>
         <TextInput
           style={styles.inputBackground}
           placeholder="Digite seu telefone"
           onChangeText={onChangePhoneHandler}
         />
-      </View>
+      </View> */}
       <View style={styles.indiqueButtonContainer}>
         <TouchableOpacity
           style={styles.indiqueButton}
@@ -92,6 +108,29 @@ await api.post('indicates',{
         </TouchableOpacity>
       </View>
     </View>
+
+    <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            {indicationStatus === "success" ? (
+              <Text>Indicação realizado com sucesso!</Text>
+            ) : (
+              <Text>Indicação falhou. Tente novamente.</Text>
+            )}
+               <TouchableOpacity style={styles.buttonCloseModalLogin} onPress={toggleModalSucess}>
+              <Text style={styles.buttonTextCloseModalLogin}>Fechar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
 
     </View>
   );
