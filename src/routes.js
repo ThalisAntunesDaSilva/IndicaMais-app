@@ -15,9 +15,9 @@ export default function Routes() {
     return (
       <NavigationContainer>     
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Indication" component={Indication} />
+     
       <Stack.Screen name="Register" component={Register} />
-      
+      <Stack.Screen name="Indication" component={Indication} />
         <Stack.Screen name="QrCode" component={QrCode} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
